@@ -1,0 +1,11 @@
+_format_version: "1.1"
+
+hosts:
+
+service:
+- name: my-service
+  url: http://localhost:3000
+  routes:
+  - name: my-route
+    paths:
+    - /
