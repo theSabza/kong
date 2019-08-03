@@ -2,6 +2,8 @@ FROM kong:latest
 
 WORKDIR /app
 
+COPY kong.yml ./
+
 COPY . .
 
 
