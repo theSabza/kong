@@ -25,6 +25,10 @@ if [[ $(sudo docker inspect -f '{{.State.Running}}' $CONTAINER_NAME) = "true" ]]
         sudo docker stop $CONTAINER_NAME
 fi
 
+if [ $(sudo docker inspect -f '{{.State.Running}}' $CONTAINER_NAME) = "true" ]; then
+sudo docker stop $CONTAINER_NAME
+fi
+
 echo "Starting Docker image name: $DOCKER_IMAGE"
 
 echo $DOCKER_PWD | sudo docker login -u $DOCKER_LOGIN --password-stdin
