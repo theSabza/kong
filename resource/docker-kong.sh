@@ -9,7 +9,7 @@ DOCKER_PWD=$4
 
 
 # Check for arguments
-if [[ $# -ly 4 ]] ; then
+if [[ $# -lt 4 ]] ; then
         echo '[ERROR] You must supply a Docker image, container, login and password'
         exit 1
 fi
