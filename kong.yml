@@ -6,7 +6,13 @@ service:
 - name: core-api
   url: http://localhost:3000
   routes:
-  - name: hello-aword
+  - name: api-index
+    paths:
+    - /
+    strip-path : false
+    hosts : 
+    - api.sabza.pk
+  - name: api-helloworld
     paths:
     - /hello
     strip-path : false
