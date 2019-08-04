@@ -8,6 +8,10 @@ DOCKER_LOGIN=$3
 DOCKER_PWD=$4
 
 
+echo "Display Recieved Variables from CircleCI : ->"
+echo "Docker Image Name : $DOCKER_IMAGE"
+echo "Docker Container Name : $CONTAINER_NAME"
+
 # Check for arguments
 if [[ $# -lt 4 ]] ; then
         echo '[ERROR] You must supply a Docker image, container, login and password'
@@ -15,7 +19,9 @@ if [[ $# -lt 4 ]] ; then
 fi
 
 # Check for running container & stop it before starting a new one
-if [ $(sudo docker inspect -f '{{.State.Running}}' $CONTAINER_NAME) = "true" ]; then
+# Error here -> need [[]] instead of [] as empty variable is supplied
+if [[ $(sudo docker inspect -f '{{.State.Running}}' $CONTAINER_NAME) = "true" ]]; then
+        echo "Docker Container running and will be stopped : $CONTAINER_NAME"
         sudo docker stop $CONTAINER_NAME
 fi
 
@@ -23,7 +29,7 @@ echo "Starting Docker image name: $DOCKER_IMAGE"
 
 echo $DOCKER_PWD | sudo docker login -u $DOCKER_LOGIN --password-stdin
 
-sudo docker run -d --rm=true --network=host --restart always \
+sudo docker run  --rm=true -d  --network=host --restart always \
         -e "KONG_DATABASE=off" \
         -e "KOND_DECLARATIVE_CONFIG=/app/kong.yml" \
         -e "KONG_PROXY_ACCESS_LOG=/dev/stdout" \
@@ -38,6 +44,3 @@ sudo docker run -d --rm=true --network=host --restart always \
 sudo $CONTAINER_NAME $DOCKER_IMAGE
 
 sudo docker ps -a
-
-# This file is needed to be added in the server as a CircleCI user 
-# in ~/deploy folder for container to install and work properly
