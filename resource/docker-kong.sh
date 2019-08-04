@@ -19,21 +19,20 @@ if [[ $# -lt 4 ]] ; then
 fi
 
 # Check for running container & stop it before starting a new one
-# Error here -> need [[]] instead of [] as empty variable is supplied
-if [[ $(sudo docker inspect -f '{{.State.Running}}' $CONTAINER_NAME) = "true" ]]; then
-        echo "Docker Container running and will be stopped : $CONTAINER_NAME"
+if [ $(sudo docker inspect -f '{{.State.Running}}' $CONTAINER_NAME) = "true" ]; then
         sudo docker stop $CONTAINER_NAME
+        echo "Stopped previous Container: $CONTAINER_NAME"
 fi
 
-if [ $(sudo docker inspect -f '{{.State.Running}}' $CONTAINER_NAME) = "true" ]; then
-sudo docker stop $CONTAINER_NAME
-fi
+echo "REMOVING OLD CONTAINER: $CONTAINER_NAME"
+sudo docker rm $CONTAINER_NAME
 
 echo "Starting Docker image name: $DOCKER_IMAGE"
 
 echo $DOCKER_PWD | sudo docker login -u $DOCKER_LOGIN --password-stdin
 
-sudo docker run  --rm=true -d  --network=host --restart always \
+echo "Will run docker run command"
+sudo docker run  -d  --network=host --restart always \
         -e "KONG_DATABASE=off" \
         -e "KOND_DECLARATIVE_CONFIG=/app/kong.yml" \
         -e "KONG_PROXY_ACCESS_LOG=/dev/stdout" \
@@ -43,8 +42,6 @@ sudo docker run  --rm=true -d  --network=host --restart always \
         -e "KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl" \
         --name $CONTAINER_NAME $DOCKER_IMAGE
 
-
-
-sudo $CONTAINER_NAME $DOCKER_IMAGE
+echo "Command run complete"
 
 sudo docker ps -a

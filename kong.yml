@@ -11,5 +11,4 @@ service:
     - /hello
     strip-path : false
     hosts : 
-    - master.api.sabza.pk
     - api.sabza.pk
