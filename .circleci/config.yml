@@ -31,8 +31,8 @@ jobs:
             ssh -o StrictHostKeyChecking=no ${STAGING_SSH_USER}@${STAGING_IP} "/bin/bash ~/deploy/docker-kong.sh $DOCKER_ORG/$IMAGE_NAME:$TAG $IMAGE_NAME $DOCKER_LOGIN $DOCKER_PWD"
             fi
             if [ $CIRCLE_BRANCH = 'production' ]; then
-            ssh -o StrictHostKeyChecking=no ${STAGING_SSH_USER}@${STAGING_IP} "/bin/bash ~/deploy/docker-kong.sh $DOCKER_ORG/$IMAGE_NAME:$TAG $IMAGE_NAME $DOCKER_LOGIN $DOCKER_PWD"
+            ssh -o StrictHostKeyChecking=no ${PRODUCTION_SSH_USER}@${PRODUCTION_IP} "/bin/bash ~/deploy/docker-kong.sh $DOCKER_ORG/$IMAGE_NAME:$TAG $IMAGE_NAME $DOCKER_LOGIN $DOCKER_PWD"
             fi
             if [ $CIRCLE_BRANCH = 'master' ]; then
-            ssh -o StrictHostKeyChecking=no ${STAGING_SSH_USER}@${STAGING_IP} "/bin/bash ~/deploy/docker-kong.sh $DOCKER_ORG/$IMAGE_NAME:$TAG $IMAGE_NAME $DOCKER_LOGIN $DOCKER_PWD"
+            ssh -o StrictHostKeyChecking=no ${PRODUCTION_SSH_USER}@${PRODUCTION_IP} "/bin/bash ~/deploy/docker-kong.sh $DOCKER_ORG/$IMAGE_NAME:$TAG $IMAGE_NAME $DOCKER_LOGIN $DOCKER_PWD"
             fi
