@@ -11,10 +11,10 @@ service:
     - /
     strip-path : false
     hosts : 
-    - api.sabza.pk
+    - sabza.pk
   - name: api-helloworld
     paths:
     - /hello
     strip-path : false
     hosts : 
-    - api.sabza.pk
+    - sabza.pk
