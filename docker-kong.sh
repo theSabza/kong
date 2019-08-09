@@ -47,8 +47,6 @@ sudo docker run  -d  --network=host --restart always \
         -e "KONG_PROXY_ERROR_LOG=/dev/stderr" \
         -e "KONG_ADMIN_ERROR_LOG=/dev/stderr" \
         -e "KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl" \
-        -p 8000:8000 \
-        -p 8001:8001 \
         --name $CONTAINER_NAME $DOCKER_IMAGE
 
 
