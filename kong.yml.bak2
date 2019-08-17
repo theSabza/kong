@@ -15,28 +15,27 @@ _format_version: "1.1"
 # can be listed in the top-level as an array of objects:
 
 services:
-- name: core-api-service
+- name: example-service
   url: http://localhost:3000
   # Entities can store tags as metadata
   tags:
   - core-api
   # Entities that have a foreign-key relationship can be nested:
   routes:
-  - name: core-api-routes
+  - name: core-api-index
     paths:
     - /
-    # - /hello
-#   plugins:
-#   - name: key-auth
+  plugins:
+  - name: key-auth
 # - name: another-service
-#   url: http://localhost:3000
+#   url: https://example.org
 
 # routes:
 # - name: another-route
 #   # Relationships can also be specified between top-level entities,
 #   # either by name or by id
 #   service: example-service
-#   hosts: ["localhost"]
+#   hosts: ["hello.com"]
 
 # consumers:
 # - username: example-user
