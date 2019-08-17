@@ -17,6 +17,7 @@ git remote -v | head -n1 | awk '{print $2}'
 # Format
 echo "Please use the format mentioned below to update"
 echo "./upgit.sh [Repo Name / Project Name] [Branch] [Action]"
+# ./upgit.sh "Sabza Kong API" "master" "Kong Yml Configuration"
 
 
 # Check for arguments
