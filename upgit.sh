@@ -24,7 +24,11 @@ if [[ $# -lt 3 ]] ; then
         echo '[ERROR] You must supply a description of action done and repo branch name'
         exit 1
 fi
-
+echo "---------------------"
+echo "Repo / Project: $GIT_REPO"
+echo "Git Action: $GIT_ACTION"
+echo "Git Branch: $GIT_BRANCH"
+echo "---------------------"
 git add -A
-git commit -m "$GIT_REPO | Action: $GIT_ACTION | Branch: $GIT_BRANCH"
+git commit -m "$GIT_REPO | Branch: $GIT_BRANCH | Action: $GIT_ACTION "
 git push origin $GIT_BRANCH
