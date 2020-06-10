@@ -39,7 +39,7 @@ echo "Starting Docker image name: $DOCKER_IMAGE"
 echo $DOCKER_PWD | sudo docker login -u $DOCKER_LOGIN --password-stdin
 
 echo "Will run docker run command"
-sudo docker run  -d  --network=host --restart always \
+sudo docker run -d --network=host --restart always \
         -e "KONG_DATABASE=off" \
         -e "KONG_DECLARATIVE_CONFIG=/app/kong.yml" \
         -e "KONG_PROXY_ACCESS_LOG=/dev/stdout" \
@@ -51,3 +51,5 @@ sudo docker run  -d  --network=host --restart always \
 
 
 echo "Command run complete"
+
+sudo docker ps -a

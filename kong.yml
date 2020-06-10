@@ -13,7 +13,7 @@ _format_version: "1.1"
 
 # Each Kong entity (core entity or custom entity introduced by a plugin)
 # can be listed in the top-level as an array of objects:
-
+host:
 services:
 - name: core-api-service
   url: http://localhost:3000
