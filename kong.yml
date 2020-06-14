@@ -18,24 +18,24 @@ services:
 - name: sabza-test-service
   url: http://localhost:5100
   tags:
-    - core-api
+    - sabza-test
     # Entities that have a foreign-key relationship can be nested:
-    routes:
-    - name: sabza-test-routes
-      paths:
-      - /
-
-
-- name: core-api-service
-  url: http://localhost:3000
-  # Entities can store tags as metadata
-  tags:
-  - core-api
-  # Entities that have a foreign-key relationship can be nested:
   routes:
-  - name: core-api-routes
+  - name: sabza-test-routes
     paths:
     - /
+
+
+# - name: core-api-service
+#   url: http://localhost:3000
+#   # Entities can store tags as metadata
+#   tags:
+#   - core-api
+#   # Entities that have a foreign-key relationship can be nested:
+#   routes:
+#   - name: core-api-routes
+#     paths:
+#     - /
     # - /hello
 #   plugins:
 #   - name: key-auth
