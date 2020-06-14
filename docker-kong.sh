@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 set -e 
@@ -6,6 +7,18 @@ DOCKER_IMAGE=$1
 CONTAINER_NAME=$2
 DOCKER_LOGIN=$3
 DOCKER_PWD=$4
+
+
+
+echo "The container name"
+echo $CONTAINER_NAME
+echo "the docker image name"
+echo $DOCKER_IMAGE
+echo "the docker login"
+echo $DOCKER_LOGIN
+echo "the docker pwd"
+echo $DOCKER_PWD
+
 
 
 echo "Display Recieved Variables from CircleCI : ->"
@@ -28,18 +41,13 @@ if [[ $(sudo docker inspect -f '{{.State.Running}}' $CONTAINER_NAME) = "false" ]
         sudo docker rm $CONTAINER_NAME
 fi 
 
-# if [[ $(sudo docker ps -a | grep $CONTAINER_NAME) = "true" ]]; then
-#       echo "REMOVING OLD CONTAINER: $CONTAINER_NAME"
-#       sudo docker rm $CONTAINER_NAME
-# fi
-
 
 echo "Starting Docker image name: $DOCKER_IMAGE"
 
 echo $DOCKER_PWD | sudo docker login -u $DOCKER_LOGIN --password-stdin
 
 echo "Will run docker run command"
-sudo docker run -d --network=host --restart always \
+sudo docker run  -d  --network=host --restart always \
         -e "KONG_DATABASE=off" \
         -e "KONG_DECLARATIVE_CONFIG=/app/kong.yml" \
         -e "KONG_PROXY_ACCESS_LOG=/dev/stdout" \
@@ -52,4 +60,11 @@ sudo docker run -d --network=host --restart always \
 
 echo "Command run complete"
 
+
 sudo docker ps -a
+
+
+
+
+
+
