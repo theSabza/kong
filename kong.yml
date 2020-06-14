@@ -11,15 +11,12 @@
 
 _format_version: "1.1"
 
-# Each Kong entity (core entity or custom entity introduced by a plugin)
-# can be listed in the top-level as an array of objects:
-host:
+
 services:
 - name: sabza-test-service
   url: http://localhost:5100
   tags:
     - sabza-test
-    # Entities that have a foreign-key relationship can be nested:
   routes:
   - name: sabza-test-routes
     paths:
