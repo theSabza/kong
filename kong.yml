@@ -21,6 +21,9 @@ services:
   - name: sabza-test-routes
     paths:
     - /
+    strip_path : false
+    hosts : 
+    - api.sabza.pk
 
 
 # - name: core-api-service
