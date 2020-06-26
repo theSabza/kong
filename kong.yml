@@ -22,6 +22,15 @@ services:
     strip_path : false 
     hosts:
     - api.sabza.pk
+- name: core-api
+  url: http://localhost:3100
+  routes:
+  - name: sabza-test-routes
+    paths:
+    - / 
+    strip_path : false 
+    hosts:
+    - useradmin.sabza.pk
 
 # - name: sabza-admin-service
 #   url: http://localhost:3100
