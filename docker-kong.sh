@@ -58,6 +58,8 @@ sudo docker run  -d  --network=host --restart always \
         --name $CONTAINER_NAME $DOCKER_IMAGE
 
 
+
+
 echo "Command run complete"
 
 
