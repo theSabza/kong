@@ -14,6 +14,15 @@ _format_version: "1.1"
 
 services:
 - name: core-api
+  url: http://localhost:3000
+  routes:
+  - name: core-api-routes
+    paths:
+    - / 
+    strip_path : false 
+    hosts:
+    - covid.sabza.pk
+- name: sabza-test
   url: http://localhost:5100
   routes:
   - name: sabza-test-routes
@@ -21,8 +30,17 @@ services:
     - / 
     strip_path : false 
     hosts:
-    - api.sabza.pk
-- name: sabza-admin
+    - test.sabza.pk
+- name: spact-api
+  url: http://localhost:6100
+  routes:
+  - name: spact-routes
+    paths:
+    - / 
+    strip_path : false 
+    hosts:
+    - spact.sabza.pk
+- name: spact
   url: http://localhost:3100
   routes:
   - name: sabza-admin-routes
